@@ -31,8 +31,8 @@ const Card = ({
 }: Props) => {
   const { data: user } = useUser();
   const { data: posts } = usePosts();
-  const { trigger: likeTrigger, isMutating: isLiking } = useLikePost();
-  const { trigger: saveTrigger, isMutating: isSaving } = useSavePost();
+  const { trigger: likeTrigger } = useLikePost();
+  const { trigger: saveTrigger } = useSavePost();
   const { trigger: deleteTrigger, isMutating: isDeleting } = useDeletePost();
 
   const navigate = useNavigate();
@@ -87,7 +87,6 @@ const Card = ({
         </div>
         <div className="flex gap-3 items-center">
           <button
-            disabled={isLiking}
             onClick={toggleLike}
             className={`border text-nowrap px-3 border-black rounded cursor-pointer font-semibold ${
               isLiked && "bg-red-400"
@@ -97,7 +96,6 @@ const Card = ({
             {likeQuantity} {isLiked ? "Liked" : "Like"}
           </button>
           <button
-            disabled={isSaving}
             onClick={toggleSave}
             className={`border px-3 border-black rounded cursor-pointer font-semibold ${
               isSaved && "bg-green-400"

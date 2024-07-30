@@ -19,7 +19,7 @@ const Profile = () => {
     params.userId
   );
 
-  const owner = posts?.some((post) => post.userId === user?.id);
+  const owner = params.userId === user?.id;
 
   return (
     <main className="flex flex-col my-10 w-fill max-w-[1400px] mx-auto px-3">
@@ -37,7 +37,7 @@ const Profile = () => {
           {isPostsLoading && <Skeleton />}
           {posts && posts?.length < 1 && (
             <p className="text-center text-xl font-semibold w-full">
-              There is not any post
+              You don&apos;t have any post yet.
             </p>
           )}
           {!isPostsLoading &&
@@ -71,7 +71,7 @@ const Profile = () => {
               {isLikesLoading && <Skeleton />}
               {likes && likes?.length < 1 && (
                 <p className="text-center text-xl font-semibold w-full">
-                  There is not any post
+                  You don&apos;t have any liked post yet.
                 </p>
               )}
               {!isLikesLoading &&
@@ -103,7 +103,7 @@ const Profile = () => {
               {isSavesLoading && <Skeleton />}
               {saves && saves?.length < 1 && (
                 <p className="text-center text-xl font-semibold w-full">
-                  There is not any post
+                  You don&apos;t have any saved post yet.
                 </p>
               )}
               {!isSavesLoading &&
